@@ -38,9 +38,7 @@ model.fit(X_resampled, y_resampled)
 y_pred = model.predict(X_test)
 ```
 
-
-
-
+![Naive_Random](https://user-images.githubusercontent.com/33167541/190917661-efb260d9-62d4-41e3-b485-e37f4cb68b7b.png)
 
 
 
@@ -75,6 +73,7 @@ y_pred = model.predict(X_test)
 
 
 
+![SMOTE](https://user-images.githubusercontent.com/33167541/190917722-62e5516e-521f-4ce8-b62f-d2f67c0528a5.png)
 
 
 
@@ -89,7 +88,7 @@ The Balanced Accuracy Score is 65.81%
     
 
 
-### Undersampling
+### Cluster Centroid Undersampling
 ---
 
 The process of oversampling amplified the minority to meet the size of the majority group. Undersampling does the opposite and curtails the size of the majority group to that of the size of the minority group. While this maintains the fidelity of the data by only using existing data, it is only very applicable if there is enough data in the minority set to work with. In very small datasets, too much of the majority set will be lost to make accurate predictions. Similar to the oversampling, there are different undersampling algorithms, including random sampling. In this case, a Cluster Centroid Undersampling technique was used, again intended to improve upon the inaccuracies of random sampling. This algorithm identifies cluseters of the majority class and generates synthetic data points, as did SMOTE, but in this case as an extrapolation of multiple existing data points to interpolate as a representative of the cluster. This allows the majority class to be sampled down to the size of the minority class. 
@@ -109,6 +108,7 @@ y_pred = model.predict(X_test)
 
 
 
+![Centroid_Cluster](https://user-images.githubusercontent.com/33167541/190917751-96137f18-06b4-47ac-93e7-d94e59808359.png)
 
 
 
@@ -143,6 +143,7 @@ y_pred = model.predict(X_test)
 ```
 
 
+![SMOTEENN](https://user-images.githubusercontent.com/33167541/190917755-56ae1e26-65b6-44f5-abea-098dc2b2b14f.png)
 
 
 
@@ -179,6 +180,7 @@ y_pred = barf.predict(X_test)
 sorted(zip(barf.feature_importances_,X.columns), reverse=True)
 ```
 
+![Barf](https://user-images.githubusercontent.com/33167541/190917763-ab5b704a-bf49-4c1d-a8de-84fd9c7fc690.png)
 
 
 
@@ -196,46 +198,102 @@ The Balanced Accuracy Score is 74.12%
 
 
 *List of features ordered by feature importance* 
+```
+   [(0.08230994769510414, 'total_rec_prncp'),
+     (0.07056965445399586, 'last_pymnt_amnt'),
+     (0.06697574557210484, 'total_rec_int'),
+     (0.0477260885777328, 'total_pymnt'),
+     (0.04670837607659922, 'total_pymnt_inv'),
+     (0.033015591804214164, 'issue_d'),
+     (0.032811236582933494, 'int_rate'),
+     (0.020352914833844552, 'mths_since_recent_inq'),
+     (0.01878397328527505, 'avg_cur_bal'),
+     (0.017975815460573304, 'out_prncp_inv'),
+     (0.016145477977071974, 'tot_hi_cred_lim'),
+     (0.016068713178803082, 'all_util'),
+     (0.01584726050311816, 'out_prncp'),
+     (0.01579798002260119, 'dti'),
+     (0.0157533477018616, 'revol_bal'),
+     (0.014690497594271377, 'mths_since_rcnt_il'),
+     (0.014419789614312933, 'bc_open_to_buy'),
+     (0.014325214246275421, 'installment'),
+     (0.013896430363045737, 'mo_sin_old_rev_tl_op'),
+     (0.013810675218325463, 'total_bc_limit'),
+     (0.013666604450997676, 'total_rev_hi_lim'),
+     (0.01366221345876921, 'tot_cur_bal'),
+     (0.01336127669303002, 'annual_inc'),
+     (0.013274027815055357, 'max_bal_bc'),
+     (0.012877672946311107, 'mo_sin_old_il_acct'),
+     (0.012775673514431742, 'il_util'),
+     (0.012655711191830867, 'bc_util'),
+     (0.01221732318662771, 'mths_since_recent_bc'),
+     (0.0121802464150522, 'total_bal_ex_mort'),
+     (0.011734883637619344, 'mo_sin_rcnt_tl'),
+     (0.01170488213737501, 'total_bal_il'),
+     (0.010897771188878462, 'total_il_high_credit_limit'),
+     (0.010642777653893383, 'num_il_tl'),
+     (0.01050655299170567, 'loan_amnt'),
+     (0.010426668657475791, 'inq_fi'),
+     (0.009941465855622058, 'mo_sin_rcnt_rev_tl_op'),
+     (0.009768253128842013, 'acc_open_past_24mths'),
+     (0.009709183155810978, 'num_rev_accts'),
+     (0.00964393780978882, 'inq_last_12m'),
+     (0.00952116913376898, 'num_actv_rev_tl'),
+     (0.0092528039720755, 'total_acc'),
+     (0.009167422028972605, 'pct_tl_nvr_dlq'),
+     (0.008940691877737876, 'num_sats'),
+     (0.008338851448864475, 'num_bc_tl'),
+     (0.008071963526217607, 'total_cu_tl'),
+     (0.008041810883117178, 'num_actv_bc_tl'),
+     (0.007682141971822379, 'open_acc'),
+     (0.007519405662023797, 'num_rev_tl_bal_gt_0'),
+     (0.0074712768581656815, 'num_op_rev_tl'),
+     (0.007362357456480017, 'percent_bc_gt_75'),
+     (0.007193457679474712, 'total_rec_late_fee'),
+     (0.006848369034211092, 'mort_acc'),
+     (0.006833371674604838, 'open_act_il'),
+     (0.005958990768199446, 'open_il_24m'),
+     (0.0056203226103396465, 'open_acc_6m'),
+     (0.005505924234849184, 'num_bc_sats'),
+     (0.005293021724728219, 'num_tl_op_past_12m'),
+     (0.005172444978051804, 'next_pymnt_d'),
+     (0.005050226079710326, 'open_il_12m'),
+     (0.005028134267923555, 'open_rv_12m'),
+     (0.004855614104465087, 'open_rv_24m'),
+     (0.004302470053544381, 'inq_last_6mths'),
+     (0.004144286320078212, 'num_accts_ever_120_pd'),
+     (0.0038569096067066107, 'tot_coll_amt'),
+     (0.0027293344174567974, 'delinq_2yrs'),
+     (0.0025686324105894053, 'home_ownership_RENT'),
+     (0.0022140735742479612, 'home_ownership_OWN'),
+     (0.002018771605501733, 'verification_status_Source Verified'),
+     (0.0018166744274413973, 'application_type_Joint App'),
+     (0.0014388734314764835, 'pub_rec'),
+     (0.0013764781275519278, 'home_ownership_MORTGAGE'),
+     (0.0013221111882989905, 'verification_status_Verified'),
+     (0.001309899659193596, 'verification_status_Not Verified'),
+     (0.0012085300073598, 'application_type_Individual'),
+     (0.00111864450224645, 'initial_list_status_f'),
+     (0.0010516445463903646, 'initial_list_status_w'),
+     (0.0008884603922790834, 'num_tl_90g_dpd_24m'),
+     (0.0008299129656903105, 'pub_rec_bankruptcies'),
+     (0.0005481645065361378, 'collections_12_mths_ex_med'),
+     (0.0004805700459645383, 'chargeoff_within_12_mths'),
+     (0.00041392958446006704, 'home_ownership_ANY'),
+     (0.0, 'tax_liens'),
+     (0.0, 'recoveries'),
+     (0.0, 'pymnt_plan_n'),
+     (0.0, 'policy_code'),
+     (0.0, 'num_tl_30dpd'),
+     (0.0, 'num_tl_120dpd_2m'),
+     (0.0, 'hardship_flag_N'),
+     (0.0, 'delinq_amnt'),
+     (0.0, 'debt_settlement_flag_N'),
+     (0.0, 'collection_recovery_fee'),
+     (0.0, 'acc_now_delinq')]
+```
 
-[(0.08230994769510414, 'total_rec_prncp'),
-(0.07056965445399586, 'last_pymnt_amnt'),
-(0.06697574557210484, 'total_rec_int'),
-(0.0477260885777328, 'total_pymnt'),
-(0.04670837607659922, 'total_pymnt_inv'),
-(0.033015591804214164, 'issue_d'),
-(0.032811236582933494, 'int_rate'),
-(0.020352914833844552, 'mths_since_recent_inq'),
-(0.01878397328527505, 'avg_cur_bal'),
-(0.017975815460573304, 'out_prncp_inv'),
-(0.016145477977071974, 'tot_hi_cred_lim'),
-(0.016068713178803082, 'all_util'),
-(0.01584726050311816, 'out_prncp'),
-(0.01579798002260119, 'dti'),
-(0.0157533477018616, 'revol_bal'),
-(0.014690497594271377, 'mths_since_rcnt_il'),
-(0.014419789614312933, 'bc_open_to_buy'),
-(0.014325214246275421, 'installment'),
-(0.013896430363045737, 'mo_sin_old_rev_tl_op'),
-(0.013810675218325463, 'total_bc_limit'),
-(0.013666604450997676, 'total_rev_hi_lim'),
-(0.01366221345876921, 'tot_cur_bal'),
-(0.01336127669303002, 'annual_inc'),
-(0.013274027815055357, 'max_bal_bc'),
-(0.012877672946311107, 'mo_sin_old_il_acct'),
-(0.012775673514431742, 'il_util'),
-(0.012655711191830867, 'bc_util'),
-(0.01221732318662771, 'mths_since_recent_bc'),
-(0.0121802464150522, 'total_bal_ex_mort'),
-(0.011734883637619344, 'mo_sin_rcnt_tl'),
-(0.01170488213737501, 'total_bal_il'),
-(0.010897771188878462, 'total_il_high_credit_limit'),
-(0.010642777653893383, 'num_il_tl'),
-(0.01050655299170567, 'loan_amnt'),
-(0.010426668657475791, 'inq_fi'),
-
-(This list was cut off for values below 0.01)   
-
-
+The strongest predictors of high-risk borrowers is tied mostly to the received payments and recovered principal. The interest rate is in the top 10 predictors along with the months since the most recent inquiry and issue date, which are not seemingly tied to risk of borrowers. Home ownership vs. renters is very low on the list with only 0.002 weight for each of them, and home ownership with a mortgage even lower. 
 
 ### Easy Ensemble AdaBoost Classifier
 --- 
@@ -253,6 +311,7 @@ y_pred = easy_e.predict(X_test)
 ```
 
 
+![Easy_E](https://user-images.githubusercontent.com/33167541/190917776-9f386aff-a84c-4c9f-b61b-83c467507fc8.png)
 
 
 
@@ -330,6 +389,7 @@ Profit:                    16,139,701,816
 
 Thus, while the model can help reduce the loss, the lender is more likely to reject too many good applicants and will likely lose profits using any of these methods to identify high-risk applicants, due to the inability to reduce the misidentification of low-risk users. 
 
+---
 
 ## Appendix - Data Cleaning
 ---
