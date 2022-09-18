@@ -352,6 +352,17 @@ The analyses performed were the Naive Random Oversampling, SMOTE Oversampling, C
     Easy Ensemble             0.09    0.92  0.16      0.93
     
 
+- With naive random oversampling, only 1% of applicants predicted to be high-risk were actually high-risk, while 70% of low-risk applicants were labeled as low-risk. The balanced accuracy showed that only 61% of high-risk and low-risk applicants were accurately classified 
+- With SMOTE oversampling, similarly there was a precision of 1% in the prediction of high-risk applicants, yet the sensitivity dropped to only 63% of low-risk applicants identified as low risk. This did yield a slightly higher accuracy of 66%
+- Cluster Centroids had no better precision, still maintaining that 1% of predicted high-risk applicants were actually high risk, and similar to the SMOTE analysis, 64% of low-risk were identified correctly. Thie had a lower accuracy, however, with only 53% of true positive and negatives being identified
+- The SMOTEENN combination analysis did not improve much, again with only 1% precision and the slightly higher than random oversampling 73% sensitivity, and an accuracy of 65%. 
+- Overall, the oversampling and undersampling techniques did not perform particularly well in identifying high-risk applicants
+
+- The Balanced Random Forests had a higher precision, correctly identifying only 3% of those predicted to be high-risk, again mis-labeling many of the low-risk applicants as high-risk, yet only 61% of low-risk applicants were accurately identified. Accuracy was higher at 74%
+- Easy Ensemble provided the best results: 9% of those identified as high-risk were indeed high risk, and 92% of low risk applicants were correctly identified, increasing the accuracy of this model to 93% 
+- The ensemble methods did perform somewhat better than the sampling adjustment methods combined with logistic regression
+
+
 ### Rejecting Good Applicants
 ---
 
