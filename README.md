@@ -1,4 +1,4 @@
-# Credit Risk Analysis 
+# Credit Risk Analysis with Supervised Machine Learning
 ***Using Logistic Regression and Ensemble Learning to Predict Credit Risk***
 #### by Justin R. Papreck
 ---
